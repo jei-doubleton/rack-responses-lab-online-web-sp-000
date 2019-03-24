@@ -2,7 +2,15 @@ class Application
 
   def call(env)
     resp = Rack::Response.new
-    resp.write "Hey EG! Love you!"
+
+    noon = Time.new(2019, 1, 1, 12, 0, 0)
+
+    if Time.now < noon
+      resp.write "Good Morning!"
+    else
+      resp.write "Good Afternoon!"
+    end
+    
     resp.finish
   end
 
